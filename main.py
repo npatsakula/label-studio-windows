@@ -13,6 +13,9 @@ def main():
         bundle_dir = sys._MEIPASS
         os.environ['LABEL_STUDIO_BASE_DIR'] = bundle_dir
 
+    # Set Django settings module before any Django imports
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'label_studio.core.settings.label_studio')
+
     # Monkey-patch admin.site.unregister to be safe against NotRegistered errors
     # This fixes the issue where jwt_auth.admin tries to unregister BlacklistedToken
     # before rest_framework_simplejwt.token_blacklist.admin registers it
