@@ -2,6 +2,7 @@ name: Build Windows Executable
 
 on:
   push:
+    branches: [master, main]
     tags:
       - 'v*'
   workflow_dispatch:  # Allow manual trigger from GitHub UI
@@ -18,23 +19,19 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-          cache: 'pip'
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
+          python -m pip install --upgrade pip setuptools wheel
           python -m pip install pyinstaller
           python -m pip install label-studio
 
-      - name: Build executable with spec file
-        run: |
-          python -m PyInstaller label-studio.spec --noconfirm
-        continue-on-error: true
+      - name: List installed packages
+        run: python -m pip list
 
-      - name: Build executable (fallback - simple mode)
-        if: failure()
+      - name: Build executable
         run: |
-          python -m PyInstaller --onefile --console --name label-studio --hidden-import=label_studio --hidden-import=label_studio.server --hidden-import=django --hidden-import=django.contrib --hidden-import=django.contrib.admin --hidden-import=django.contrib.auth --hidden-import=django.contrib.contenttypes --hidden-import=django.contrib.sessions --hidden-import=django.contrib.staticfiles --hidden-import=rest_framework --hidden-import=gunicorn --collect-all label_studio main.py
+          python -m PyInstaller --onefile --console --name label-studio --hidden-import=label_studio --hidden-import=label_studio.server --hidden-import=django --hidden-import=django.contrib --hidden-import=django.contrib.admin --hidden-import=django.contrib.auth --hidden-import=django.contrib.contenttypes --hidden-import=django.contrib.sessions --hidden-import=django.contrib.staticfiles --hidden-import=rest_framework --collect-all label_studio main.py
 
       - name: Test executable
         run: |
