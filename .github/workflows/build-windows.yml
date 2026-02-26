@@ -71,7 +71,6 @@ jobs:
             --collect-data label_studio_sdk `
             --collect-data rest_framework `
             --collect-data rest_framework_simplejwt `
-            --collect-data drf_yasg `
             --collect-data drf_spectacular `
             --collect-data django_filters `
             --collect-data django_extensions `
@@ -88,16 +87,6 @@ jobs:
             --copy-metadata label-studio-sdk `
             --copy-metadata django `
             --copy-metadata djangorestframework `
-            --copy-metadata drf-spectacular `
-            --copy-metadata drf-yasg `
-            --copy-metadata django-cors-headers `
-            --copy-metadata django-filter `
-            --copy-metadata django-extensions `
-            --copy-metadata django-rq `
-            --copy-metadata rules `
-            --copy-metadata pydantic `
-            --copy-metadata sentry-sdk `
-            --copy-metadata jsonschema `
             main.py
 
       - name: Test executable
