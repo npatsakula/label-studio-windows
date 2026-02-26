@@ -165,6 +165,7 @@ jobs:
             --hidden-import=pandas `
             --hidden-import=psutil `
             --hidden-import=packaging.version `
+            --runtime-hook=hook-run-django_admin.py `
             --collect-all label_studio `
             --collect-all label_studio_sdk `
             --collect-all rest_framework `

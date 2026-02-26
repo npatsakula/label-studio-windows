@@ -4,6 +4,7 @@ Entry point for PyInstaller executable
 """
 import sys
 import os
+import pathlib
 
 
 def main():
@@ -13,24 +14,7 @@ def main():
         bundle_dir = sys._MEIPASS
         os.environ['LABEL_STUDIO_BASE_DIR'] = bundle_dir
 
-    # Set Django settings module before any Django imports
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'label_studio.core.settings.label_studio')
-
-    # Monkey-patch admin.site.unregister to be safe against NotRegistered errors
-    # This fixes the issue where jwt_auth.admin tries to unregister BlacklistedToken
-    # before rest_framework_simplejwt.token_blacklist.admin registers it
-    from django.contrib import admin
-    _original_unregister = admin.site.unregister
-
-    def _safe_unregister(model_or_iterable):
-        try:
-            _original_unregister(model_or_iterable)
-        except admin.sites.NotRegistered:
-            pass  # Model not registered, ignore
-
-    admin.site.unregister = _safe_unregister
-
-    # Import and run label-studio server
+    # Import and run label-studio server (it handles all Django setup internally)
     from label_studio.server import main as ls_main
 
     # Default arguments if none provided
