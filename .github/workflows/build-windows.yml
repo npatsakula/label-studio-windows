@@ -32,155 +32,44 @@ jobs:
       - name: Build executable
         run: |
           python -m PyInstaller --onefile --console --name label-studio `
-            --hidden-import=label_studio `
-            --hidden-import=label_studio.server `
-            --hidden-import=label_studio_sdk `
-            --hidden-import=django `
-            --hidden-import=django.contrib.admin `
-            --hidden-import=django.contrib.auth `
-            --hidden-import=django.contrib.contenttypes `
-            --hidden-import=django.contrib.sessions `
-            --hidden-import=django.contrib.messages `
-            --hidden-import=django.contrib.staticfiles `
-            --hidden-import=django.contrib.humanize `
-            --hidden-import=django.contrib.postgres `
-            --hidden-import=django.contrib.postgres.fields `
-            --hidden-import=django.contrib.postgres.search `
-            --hidden-import=django.core `
-            --hidden-import=django.core.wsgi `
-            --hidden-import=rest_framework `
-            --hidden-import=rest_framework.views `
-            --hidden-import=rest_framework.viewsets `
-            --hidden-import=rest_framework.routers `
-            --hidden-import=rest_framework.serializers `
-            --hidden-import=rest_framework.authentication `
-            --hidden-import=rest_framework.permissions `
-            --hidden-import=rest_framework.parsers `
-            --hidden-import=rest_framework.renderers `
-            --hidden-import=rest_framework.response `
-            --hidden-import=rest_framework.settings `
-            --hidden-import=rest_framework.filters `
-            --hidden-import=rest_framework.pagination `
-            --hidden-import=rest_framework.generics `
-            --hidden-import=rest_framework.mixins `
-            --hidden-import=rest_framework.status `
-            --hidden-import=rest_framework.exceptions `
-            --hidden-import=rest_framework.fields `
-            --hidden-import=rest_framework.schemas `
-            --hidden-import=rest_framework.utils `
-            --hidden-import=rest_framework.decorators `
-            --hidden-import=rest_framework.throttling `
-            --hidden-import=rest_framework.negotiation `
-            --hidden-import=rest_framework.metadata `
-            --hidden-import=rest_framework.validators `
-            --hidden-import=rest_framework.relations `
-            --hidden-import=rest_framework.request `
-            --hidden-import=rest_framework.reverse `
-            --hidden-import=rest_framework.test `
-            --hidden-import=rest_framework.authtoken `
-            --hidden-import=rest_framework.authtoken.models `
-            --hidden-import=rest_framework.authtoken.views `
-            --hidden-import=rest_framework_simplejwt `
-            --hidden-import=rest_framework_simplejwt.authentication `
-            --hidden-import=rest_framework_simplejwt.views `
-            --hidden-import=rest_framework_simplejwt.tokens `
-            --hidden-import=rest_framework_simplejwt.serializers `
-            --hidden-import=rest_framework_simplejwt.token_blacklist `
-            --hidden-import=rest_framework_simplejwt.token_blacklist.models `
-            --hidden-import=drf_spectacular `
-            --hidden-import=drf_spectacular.views `
-            --hidden-import=drf_spectacular.openapi `
-            --hidden-import=drf_spectacular.utils `
-            --hidden-import=drf_spectacular.extensions `
-            --hidden-import=drf_generators `
-            --hidden-import=drf_dynamic_fields `
-            --hidden-import=rest_flex_fields `
-            --hidden-import=drf_yasg `
-            --hidden-import=drf_yasg.views `
-            --hidden-import=drf_yasg.generators `
-            --hidden-import=drf_yasg.inspectors `
-            --hidden-import=drf_yasg.app_settings `
-            --hidden-import=drf_yasg.openapi `
-            --hidden-import=django_filters `
-            --hidden-import=django_filters.rest_framework `
-            --hidden-import=corsheaders `
-            --hidden-import=corsheaders.middleware `
-            --hidden-import=django_extensions `
-            --hidden-import=django_extensions.apps `
-            --hidden-import=django_rq `
-            --hidden-import=django_rq.urls `
-            --hidden-import=django_rq.views `
-            --hidden-import=django_user_agents `
-            --hidden-import=django_user_agents.middleware `
-            --hidden-import=rules `
-            --hidden-import=rules.templatetags `
-            --hidden-import=rules.templatetags.rules `
-            --hidden-import=annoying `
-            --hidden-import=annoying.fields `
-            --hidden-import=coreapi `
-            --hidden-import=coreschema `
-            --hidden-import=openapi_codec `
-            --hidden-import=simplejson `
-            --hidden-import=ldclient `
-            --hidden-import=ldclient.config `
-            --hidden-import=launchdarkly_server_sdk `
-            --hidden-import=box `
-            --hidden-import=pyboxen `
-            --hidden-import=csp `
-            --hidden-import=csp.decorators `
-            --hidden-import=csp.middleware `
-            --hidden-import=environ `
-            --hidden-import=django_environ `
-            --hidden-import=storages `
-            --hidden-import=storages.backends `
-            --hidden-import=storages.backends.s3boto3 `
-            --hidden-import=storages.backends.gcloud `
-            --hidden-import=storages.backends.azure_storage `
-            --hidden-import=ranged_fileresponse `
-            --hidden-import=pythonjsonlogger `
-            --hidden-import=python_json_logger `
-            --hidden-import=google.auth `
-            --hidden-import=google.auth.transport.requests `
-            --hidden-import=google.oauth2 `
-            --hidden-import=google.cloud.storage `
-            --hidden-import=azure.core.exceptions `
-            --hidden-import=azure.storage.blob `
-            --hidden-import=botocore.exceptions `
-            --hidden-import=botocore.handlers `
-            --hidden-import=boto3 `
-            --hidden-import=rq `
-            --hidden-import=rq.job `
-            --hidden-import=rq.registry `
-            --hidden-import=rq.command `
-            --hidden-import=redis `
-            --hidden-import=appdirs `
-            --hidden-import=colorama `
-            --hidden-import=bleach `
-            --hidden-import=defusedxml `
-            --hidden-import=xmljson `
-            --hidden-import=ijson `
-            --hidden-import=ujson `
-            --hidden-import=pytz `
-            --hidden-import=tldextract `
-            --hidden-import=sentry_sdk `
-            --hidden-import=pydantic `
-            --hidden-import=jsonschema `
-            --hidden-import=numpy `
-            --hidden-import=pandas `
-            --hidden-import=psutil `
-            --hidden-import=packaging.version `
             --runtime-hook=hook-run-django_admin.py `
-            --collect-all label_studio `
-            --collect-all label_studio_sdk `
-            --collect-all rest_framework `
-            --collect-all drf_yasg `
-            --collect-all drf_spectacular `
-            --collect-all corsheaders `
-            --collect-all django_extensions `
-            --collect-all django_filters `
-            --collect-all django_rq `
-            --collect-all rules `
-            --collect-all ldclient `
+            --collect-submodules label_studio `
+            --collect-submodules label_studio_sdk `
+            --collect-submodules rest_framework `
+            --collect-submodules rest_framework_simplejwt `
+            --collect-submodules drf_yasg `
+            --collect-submodules drf_spectacular `
+            --collect-submodules django_filters `
+            --collect-submodules corsheaders `
+            --collect-submodules django_extensions `
+            --collect-submodules django_rq `
+            --collect-submodules django_user_agents `
+            --collect-submodules rules `
+            --collect-submodules drf_generators `
+            --collect-submodules drf_dynamic_fields `
+            --collect-submodules rest_flex_fields `
+            --collect-submodules ldclient `
+            --collect-submodules launchdarkly_server_sdk `
+            --collect-submodules storages `
+            --collect-submodules django_csp `
+            --collect-submodules django_environ `
+            --collect-submodules csp `
+            --collect-submodules google.auth `
+            --collect-submodules google.oauth2 `
+            --collect-submodules google.cloud `
+            --collect-submodules azure.core `
+            --collect-submodules azure.storage `
+            --collect-submodules botocore `
+            --collect-submodules boto3 `
+            --collect-submodules rq `
+            --collect-submodules sentry_sdk `
+            --collect-submodules pydantic `
+            --collect-data label_studio `
+            --collect-data rest_framework `
+            --collect-data drf_yasg `
+            --collect-data drf_spectacular `
+            --collect-data django_rq `
+            --collect-data rules `
             main.py
 
       - name: Test executable
