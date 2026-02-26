@@ -10,20 +10,22 @@ def main():
     """Launch Label Studio server."""
     # Set up environment for frozen executable
     if getattr(sys, 'frozen', False):
-        # Running as compiled executable
         bundle_dir = sys._MEIPASS
         os.environ['LABEL_STUDIO_BASE_DIR'] = bundle_dir
 
-    # Pre-import token_blacklist admin to ensure models are registered
-    # before jwt_auth.admin tries to unregister them
-    try:
-        import rest_framework_simplejwt
-        import rest_framework_simplejwt.token_blacklist
-        # Ensure admin is registered
-        from django.contrib import admin
-        from rest_framework_simplejwt.token_blacklist import admin as token_blacklist_admin  # noqa
-    except ImportError:
-        pass
+    # Monkey-patch admin.site.unregister to be safe against NotRegistered errors
+    # This fixes the issue where jwt_auth.admin tries to unregister BlacklistedToken
+    # before rest_framework_simplejwt.token_blacklist.admin registers it
+    from django.contrib import admin
+    _original_unregister = admin.site.unregister
+
+    def _safe_unregister(model_or_iterable):
+        try:
+            _original_unregister(model_or_iterable)
+        except admin.sites.NotRegistered:
+            pass  # Model not registered, ignore
+
+    admin.site.unregister = _safe_unregister
 
     # Import and run label-studio server
     from label_studio.server import main as ls_main
