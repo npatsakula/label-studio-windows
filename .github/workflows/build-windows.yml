@@ -70,6 +70,10 @@ jobs:
             --collect-data drf_spectacular `
             --collect-data django_rq `
             --collect-data rules `
+            --copy-metadata label-studio `
+            --copy-metadata label-studio-sdk `
+            --copy-metadata django `
+            --copy-metadata djangorestframework `
             main.py
 
       - name: Test executable
