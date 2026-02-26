@@ -31,11 +31,12 @@ jobs:
 
       - name: Build executable
         run: |
-          python -m PyInstaller --onefile --console --name label-studio --hidden-import=label_studio --hidden-import=label_studio.server --hidden-import=django --hidden-import=django.contrib --hidden-import=django.contrib.admin --hidden-import=django.contrib.auth --hidden-import=django.contrib.contenttypes --hidden-import=django.contrib.sessions --hidden-import=django.contrib.staticfiles --hidden-import=rest_framework --collect-all label_studio main.py
+          python -m PyInstaller --onefile --console --name label-studio --hidden-import=label_studio --hidden-import=label_studio.server --hidden-import=label_studio_sdk --hidden-import=django --hidden-import=django.contrib --hidden-import=django.contrib.admin --hidden-import=django.contrib.auth --hidden-import=django.contrib.contenttypes --hidden-import=django.contrib.sessions --hidden-import=django.contrib.staticfiles --hidden-import=rest_framework --collect-all label_studio --collect-all label_studio_sdk main.py
 
       - name: Test executable
         run: |
-          dist\label-studio.exe --help || echo "Help command completed"
+          dist\label-studio.exe --help
+        continue-on-error: true
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
