@@ -92,6 +92,12 @@ jobs:
             --hidden-import=drf_yasg.openapi `
             --hidden-import=django_filters `
             --hidden-import=django_filters.rest_framework `
+            --hidden-import=corsheaders `
+            --hidden-import=corsheaders.middleware `
+            --hidden-import=coreapi `
+            --hidden-import=coreschema `
+            --hidden-import=openapi_codec `
+            --hidden-import=simplejson `
             --collect-all label_studio `
             --collect-all label_studio_sdk `
             --collect-all rest_framework `
