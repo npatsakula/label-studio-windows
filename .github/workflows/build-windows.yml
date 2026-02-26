@@ -98,6 +98,14 @@ jobs:
             --hidden-import=coreschema `
             --hidden-import=openapi_codec `
             --hidden-import=simplejson `
+            --hidden-import=django_extensions `
+            --hidden-import=django_extensions.apps `
+            --hidden-import=rules `
+            --hidden-import=django_rq `
+            --hidden-import=django_otp `
+            --hidden-import=django_otp.plugins `
+            --hidden-import=django_otp.plugins.otp_totp `
+            --hidden-import=django_otp.plugins.otp_static `
             --collect-all label_studio `
             --collect-all label_studio_sdk `
             --collect-all rest_framework `
