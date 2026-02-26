@@ -108,6 +108,8 @@ jobs:
             --hidden-import=django_extensions `
             --hidden-import=django_extensions.apps `
             --hidden-import=django_rq `
+            --hidden-import=django_rq.urls `
+            --hidden-import=django_rq.views `
             --hidden-import=django_user_agents `
             --hidden-import=django_user_agents.middleware `
             --hidden-import=rules `
@@ -174,6 +176,7 @@ jobs:
             --collect-all corsheaders `
             --collect-all django_extensions `
             --collect-all django_filters `
+            --collect-all django_rq `
             --collect-all ldclient `
             main.py
 
