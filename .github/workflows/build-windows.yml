@@ -36,13 +36,13 @@ jobs:
             --hidden-import=label_studio.server `
             --hidden-import=label_studio_sdk `
             --hidden-import=django `
-            --hidden-import=django.contrib `
             --hidden-import=django.contrib.admin `
             --hidden-import=django.contrib.auth `
             --hidden-import=django.contrib.contenttypes `
             --hidden-import=django.contrib.sessions `
-            --hidden-import=django.contrib.staticfiles `
             --hidden-import=django.contrib.messages `
+            --hidden-import=django.contrib.staticfiles `
+            --hidden-import=django.contrib.humanize `
             --hidden-import=django.core `
             --hidden-import=django.core.wsgi `
             --hidden-import=rest_framework `
@@ -73,17 +73,20 @@ jobs:
             --hidden-import=rest_framework.relations `
             --hidden-import=rest_framework.request `
             --hidden-import=rest_framework.reverse `
-            --hidden-import=rest_framework.routers `
             --hidden-import=rest_framework.test `
             --hidden-import=rest_framework.authtoken `
             --hidden-import=rest_framework.authtoken.models `
             --hidden-import=rest_framework.authtoken.views `
-            --hidden-import=rest_framework.simplejwt `
             --hidden-import=rest_framework_simplejwt `
             --hidden-import=rest_framework_simplejwt.authentication `
             --hidden-import=rest_framework_simplejwt.views `
             --hidden-import=rest_framework_simplejwt.tokens `
             --hidden-import=rest_framework_simplejwt.serializers `
+            --hidden-import=rest_framework_simplejwt.token_blacklist `
+            --hidden-import=drf_spectacular `
+            --hidden-import=drf_spectacular.views `
+            --hidden-import=drf_spectacular.openapi `
+            --hidden-import=drf_generators `
             --hidden-import=drf_yasg `
             --hidden-import=drf_yasg.views `
             --hidden-import=drf_yasg.generators `
@@ -94,22 +97,25 @@ jobs:
             --hidden-import=django_filters.rest_framework `
             --hidden-import=corsheaders `
             --hidden-import=corsheaders.middleware `
+            --hidden-import=django_extensions `
+            --hidden-import=django_extensions.apps `
+            --hidden-import=django_rq `
+            --hidden-import=django_user_agents `
+            --hidden-import=django_user_agents.middleware `
+            --hidden-import=rules `
+            --hidden-import=annoying `
             --hidden-import=coreapi `
             --hidden-import=coreschema `
             --hidden-import=openapi_codec `
             --hidden-import=simplejson `
-            --hidden-import=django_extensions `
-            --hidden-import=django_extensions.apps `
-            --hidden-import=rules `
-            --hidden-import=django_rq `
-            --hidden-import=django_otp `
-            --hidden-import=django_otp.plugins `
-            --hidden-import=django_otp.plugins.otp_totp `
-            --hidden-import=django_otp.plugins.otp_static `
             --collect-all label_studio `
             --collect-all label_studio_sdk `
             --collect-all rest_framework `
             --collect-all drf_yasg `
+            --collect-all drf_spectacular `
+            --collect-all corsheaders `
+            --collect-all django_extensions `
+            --collect-all django_filters `
             main.py
 
       - name: Test executable
