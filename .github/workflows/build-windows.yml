@@ -113,6 +113,8 @@ jobs:
             --hidden-import=django_user_agents `
             --hidden-import=django_user_agents.middleware `
             --hidden-import=rules `
+            --hidden-import=rules.templatetags `
+            --hidden-import=rules.templatetags.rules `
             --hidden-import=annoying `
             --hidden-import=annoying.fields `
             --hidden-import=coreapi `
@@ -177,6 +179,7 @@ jobs:
             --collect-all django_extensions `
             --collect-all django_filters `
             --collect-all django_rq `
+            --collect-all rules `
             --collect-all ldclient `
             main.py
 
