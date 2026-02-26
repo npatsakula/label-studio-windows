@@ -23,35 +23,22 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pyinstaller
-          pip install label-studio
+          python -m pip install pyinstaller
+          python -m pip install label-studio
 
-      - name: Build executable with PyInstaller
+      - name: Build executable with spec file
         run: |
-          pyinstaller label-studio.spec --noconfirm
+          python -m PyInstaller label-studio.spec --noconfirm
         continue-on-error: true
 
       - name: Build executable (fallback - simple mode)
         if: failure()
         run: |
-          pyinstaller --onefile --console --name label-studio `
-            --hidden-import=label_studio `
-            --hidden-import=label_studio.server `
-            --hidden-import=django `
-            --hidden-import=django.contrib `
-            --hidden-import=django.contrib.admin `
-            --hidden-import=django.contrib.auth `
-            --hidden-import=django.contrib.contenttypes `
-            --hidden-import=django.contrib.sessions `
-            --hidden-import=django.contrib.staticfiles `
-            --hidden-import=rest_framework `
-            --hidden-import=gunicorn `
-            --collect-all label_studio `
-            main.py
+          python -m PyInstaller --onefile --console --name label-studio --hidden-import=label_studio --hidden-import=label_studio.server --hidden-import=django --hidden-import=django.contrib --hidden-import=django.contrib.admin --hidden-import=django.contrib.auth --hidden-import=django.contrib.contenttypes --hidden-import=django.contrib.sessions --hidden-import=django.contrib.staticfiles --hidden-import=rest_framework --hidden-import=gunicorn --collect-all label_studio main.py
 
       - name: Test executable
         run: |
-          dist\label-studio.exe --help || echo "Help command check"
+          dist\label-studio.exe --help || echo "Help command completed"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
