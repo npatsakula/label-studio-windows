@@ -65,6 +65,7 @@ jobs:
             --collect-submodules sentry_sdk `
             --collect-submodules pydantic `
             --collect-data label_studio `
+            --collect-data label_studio_sdk `
             --collect-data rest_framework `
             --collect-data drf_yasg `
             --collect-data drf_spectacular `
