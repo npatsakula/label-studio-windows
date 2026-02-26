@@ -14,6 +14,17 @@ def main():
         bundle_dir = sys._MEIPASS
         os.environ['LABEL_STUDIO_BASE_DIR'] = bundle_dir
 
+    # Pre-import token_blacklist admin to ensure models are registered
+    # before jwt_auth.admin tries to unregister them
+    try:
+        import rest_framework_simplejwt
+        import rest_framework_simplejwt.token_blacklist
+        # Ensure admin is registered
+        from django.contrib import admin
+        from rest_framework_simplejwt.token_blacklist import admin as token_blacklist_admin  # noqa
+    except ImportError:
+        pass
+
     # Import and run label-studio server
     from label_studio.server import main as ls_main
 
