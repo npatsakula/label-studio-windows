@@ -43,6 +43,9 @@ jobs:
             --hidden-import=django.contrib.messages `
             --hidden-import=django.contrib.staticfiles `
             --hidden-import=django.contrib.humanize `
+            --hidden-import=django.contrib.postgres `
+            --hidden-import=django.contrib.postgres.fields `
+            --hidden-import=django.contrib.postgres.search `
             --hidden-import=django.core `
             --hidden-import=django.core.wsgi `
             --hidden-import=rest_framework `
@@ -83,10 +86,15 @@ jobs:
             --hidden-import=rest_framework_simplejwt.tokens `
             --hidden-import=rest_framework_simplejwt.serializers `
             --hidden-import=rest_framework_simplejwt.token_blacklist `
+            --hidden-import=rest_framework_simplejwt.token_blacklist.models `
             --hidden-import=drf_spectacular `
             --hidden-import=drf_spectacular.views `
             --hidden-import=drf_spectacular.openapi `
+            --hidden-import=drf_spectacular.utils `
+            --hidden-import=drf_spectacular.extensions `
             --hidden-import=drf_generators `
+            --hidden-import=drf_dynamic_fields `
+            --hidden-import=rest_flex_fields `
             --hidden-import=drf_yasg `
             --hidden-import=drf_yasg.views `
             --hidden-import=drf_yasg.generators `
@@ -104,10 +112,59 @@ jobs:
             --hidden-import=django_user_agents.middleware `
             --hidden-import=rules `
             --hidden-import=annoying `
+            --hidden-import=annoying.fields `
             --hidden-import=coreapi `
             --hidden-import=coreschema `
             --hidden-import=openapi_codec `
             --hidden-import=simplejson `
+            --hidden-import=ldclient `
+            --hidden-import=ldclient.config `
+            --hidden-import=launchdarkly_server_sdk `
+            --hidden-import=box `
+            --hidden-import=pyboxen `
+            --hidden-import=csp `
+            --hidden-import=csp.decorators `
+            --hidden-import=csp.middleware `
+            --hidden-import=environ `
+            --hidden-import=django_environ `
+            --hidden-import=storages `
+            --hidden-import=storages.backends `
+            --hidden-import=storages.backends.s3boto3 `
+            --hidden-import=storages.backends.gcloud `
+            --hidden-import=storages.backends.azure_storage `
+            --hidden-import=ranged_fileresponse `
+            --hidden-import=pythonjsonlogger `
+            --hidden-import=python_json_logger `
+            --hidden-import=google.auth `
+            --hidden-import=google.auth.transport.requests `
+            --hidden-import=google.oauth2 `
+            --hidden-import=google.cloud.storage `
+            --hidden-import=azure.core.exceptions `
+            --hidden-import=azure.storage.blob `
+            --hidden-import=botocore.exceptions `
+            --hidden-import=botocore.handlers `
+            --hidden-import=boto3 `
+            --hidden-import=rq `
+            --hidden-import=rq.job `
+            --hidden-import=rq.registry `
+            --hidden-import=rq.command `
+            --hidden-import=redis `
+            --hidden-import=appdirs `
+            --hidden-import=colorama `
+            --hidden-import=bleach `
+            --hidden-import=defusedxml `
+            --hidden-import=xmljson `
+            --hidden-import=ijson `
+            --hidden-import=ujson `
+            --hidden-import=pytz `
+            --hidden-import=tldextract `
+            --hidden-import=sentry_sdk `
+            --hidden-import=pydantic `
+            --hidden-import=jsonschema `
+            --hidden-import=numpy `
+            --hidden-import=pandas `
+            --hidden-import=psutil `
+            --hidden-import=packaging.version `
             --collect-all label_studio `
             --collect-all label_studio_sdk `
             --collect-all rest_framework `
@@ -116,6 +173,7 @@ jobs:
             --collect-all corsheaders `
             --collect-all django_extensions `
             --collect-all django_filters `
+            --collect-all ldclient `
             main.py
 
       - name: Test executable
