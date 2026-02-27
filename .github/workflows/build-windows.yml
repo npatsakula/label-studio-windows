@@ -29,6 +29,11 @@ jobs:
       - name: List installed packages
         run: python -m pip list
 
+      - name: Patch label_studio for Windows
+        run: |
+          $ls_path = python -c "import label_studio; import os; print(os.path.dirname(label_studio.__file__))"
+          Copy-Item patches/static_serve.py "$ls_path/core/utils/static_serve.py" -Force
+
       - name: Build executable
         run: |
           python -m PyInstaller --onefile --console --name label-studio `
