@@ -32,44 +32,8 @@ jobs:
       - name: Build executable
         run: |
           python -m PyInstaller --onefile --console --name label-studio `
+            --additional-hooks-dir=hooks `
             --runtime-hook=hook-run-django_admin.py `
-            --collect-submodules label_studio `
-            --collect-submodules label_studio_sdk `
-            --collect-submodules rest_framework `
-            --collect-submodules rest_framework_simplejwt `
-            --collect-submodules drf_yasg `
-            --collect-submodules drf_spectacular `
-            --collect-submodules django_filters `
-            --collect-submodules corsheaders `
-            --collect-submodules django_extensions `
-            --collect-submodules django_rq `
-            --collect-submodules django_user_agents `
-            --collect-submodules rules `
-            --collect-submodules drf_generators `
-            --collect-submodules drf_dynamic_fields `
-            --collect-submodules rest_flex_fields `
-            --collect-submodules ldclient `
-            --collect-submodules launchdarkly_server_sdk `
-            --collect-submodules storages `
-            --collect-submodules django_csp `
-            --collect-submodules django_environ `
-            --collect-submodules csp `
-            --collect-submodules google.auth `
-            --collect-submodules google.oauth2 `
-            --collect-submodules google.cloud `
-            --collect-submodules azure.core `
-            --collect-submodules azure.storage `
-            --collect-submodules botocore `
-            --collect-submodules boto3 `
-            --collect-submodules rq `
-            --collect-submodules sentry_sdk `
-            --collect-submodules pydantic `
-            --collect-data label_studio `
-            --collect-data label_studio_sdk `
-            --collect-data rest_framework `
-            --collect-data drf_spectacular `
-            --collect-data django_rq `
-            --collect-data rules `
             main.py
 
       - name: Test executable

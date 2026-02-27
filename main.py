@@ -4,6 +4,7 @@ Entry point for PyInstaller executable
 """
 import sys
 import os
+import pathlib
 
 
 def main():
