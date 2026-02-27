@@ -20,6 +20,12 @@ admin_sites.AdminSite.unregister = _safe_unregister
 # "/react-app/vendor.123.js", the result "/vendor.123.js" is treated as
 # drive-root-relative (C:\vendor.123.js), causing safe_join to reject it.
 if sys.platform == 'win32':
+    import os
+    import label_studio as _ls
+    # Mirror server.py's _setup_env(): add label_studio dir to sys.path
+    # so internal absolute imports like "from core.utils..." resolve
+    sys.path.insert(0, os.path.dirname(_ls.__file__))
+
     import label_studio.core.utils.static_serve as _static_serve
     _original_serve = _static_serve.serve
 
