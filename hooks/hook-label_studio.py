@@ -5,14 +5,28 @@ Triggered when PyInstaller detects `import label_studio`.
 Declares all runtime dependencies that PyInstaller can't auto-detect
 because Django loads them dynamically (INSTALLED_APPS, middleware, etc.).
 """
+import os
 from PyInstaller.utils.hooks import (
     collect_all,
     collect_submodules,
+    get_package_paths,
 )
 
 datas = []
 binaries = []
 hiddenimports = []
+
+# ── Frontend assets (web/dist/) ──────────────────────────────────────────────
+# The React frontend is installed as a separate "web" directory in site-packages,
+# NOT inside label_studio. Settings reference it as ../../web/dist/ relative to
+# label_studio/core/settings/. We bundle it at "web" so the relative path works.
+try:
+    _pkg_base, _pkg_dir = get_package_paths('label_studio')
+    _web_dir = os.path.join(_pkg_base, 'web')
+    if os.path.isdir(_web_dir):
+        datas += [(_web_dir, 'web')]
+except Exception:
+    pass
 
 # ── Packages that need full collection (submodules + data + metadata) ────────
 # These have templates, static files, or metadata that must be bundled.
