@@ -13,13 +13,6 @@ def main():
         bundle_dir = sys._MEIPASS
         os.environ['LABEL_STUDIO_BASE_DIR'] = bundle_dir
 
-        # Add label_studio directory to sys.path FIRST
-        # This is needed because label_studio modules use imports like
-        # "from jwt_auth..." instead of "from label_studio.jwt_auth..."
-        ls_path = os.path.join(bundle_dir, 'label_studio')
-        if ls_path not in sys.path:
-            sys.path.insert(0, ls_path)
-
     # Import and run label-studio server
     from label_studio.server import main as ls_main
 

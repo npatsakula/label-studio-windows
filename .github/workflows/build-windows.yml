@@ -64,29 +64,12 @@ jobs:
             --collect-submodules rq `
             --collect-submodules sentry_sdk `
             --collect-submodules pydantic `
-            --collect-submodules jsonschema `
-            --collect-submodules referencing `
-            --collect-submodules jsonschema_specifications `
             --collect-data label_studio `
             --collect-data label_studio_sdk `
             --collect-data rest_framework `
-            --collect-data rest_framework_simplejwt `
             --collect-data drf_spectacular `
-            --collect-data django_filters `
-            --collect-data django_extensions `
             --collect-data django_rq `
             --collect-data rules `
-            --collect-data storages `
-            --collect-data corsheaders `
-            --collect-data sentry_sdk `
-            --collect-data jsonschema `
-            --collect-data pydantic `
-            --collect-data drf_dynamic_fields `
-            --collect-data rest_flex_fields `
-            --copy-metadata label-studio `
-            --copy-metadata label-studio-sdk `
-            --copy-metadata django `
-            --copy-metadata djangorestframework `
             main.py
 
       - name: Test executable
